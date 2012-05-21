@@ -158,6 +158,9 @@ BOOL TDIsFileExistsError( NSError* error ) {
     return ($equal(domain, NSPOSIXErrorDomain) && code == EEXIST)
 #ifndef GNUSTEP
         || ($equal(domain, NSCocoaErrorDomain) && code == NSFileWriteFileExistsError)
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 50000
+        || ($equal(domain, NSCocoaErrorDomain) && code == NSFileWriteUnknownError)
+#endif    
 #endif
         ;
 }

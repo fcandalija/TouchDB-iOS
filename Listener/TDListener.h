@@ -19,6 +19,7 @@
 }
 
 - (id) initWithTDServer: (TDServer*)server port: (UInt16)port;
+- (id) initWithTDServer: (TDServer*)server port: (UInt16)port  interface: (NSString*)interface;
 
 @property BOOL readOnly;
 

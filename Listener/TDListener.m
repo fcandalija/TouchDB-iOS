@@ -28,6 +28,10 @@
 
 
 - (id) initWithTDServer: (TDServer*)server port: (UInt16)port {
+    return [self initWithTDServer:server port:port interface:nil];
+}
+
+-(id) initWithTDServer:(TDServer *)server port:(UInt16)port interface:(NSString*) interface {
     self = [super init];
     if (self) {
         _tdServer = [server retain];
@@ -35,11 +39,11 @@
         _httpServer.listener = self;
         _httpServer.tdServer = _tdServer;
         _httpServer.port = port;
+        _httpServer.interface = interface;
         _httpServer.connectionClass = [TDHTTPConnection class];
     }
     return self;
 }
-
 
 - (void)dealloc
 {
